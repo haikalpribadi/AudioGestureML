@@ -35,8 +35,8 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/sources/bextract.o
+	${OBJECTDIR}/sources/bextract.o \
+	${OBJECTDIR}/sources/main.o
 
 
 # C Compiler Flags
@@ -57,21 +57,21 @@ LDLIBSOPTIONS=-L/usr/local/lib -lmarsyas
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/audiogestureml
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libAudioGestureML.${CND_DLIB_EXT}
 
-${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/audiogestureml: ${OBJECTFILES}
+${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libAudioGestureML.${CND_DLIB_EXT}: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
-	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/audiogestureml ${OBJECTFILES} ${LDLIBSOPTIONS}
-
-${OBJECTDIR}/main.o: main.cpp 
-	${MKDIR} -p ${OBJECTDIR}
-	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/include/marsyas -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.cpp
+	${LINK.cc} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libAudioGestureML.${CND_DLIB_EXT} ${OBJECTFILES} ${LDLIBSOPTIONS} -shared -fPIC
 
 ${OBJECTDIR}/sources/bextract.o: sources/bextract.cpp 
 	${MKDIR} -p ${OBJECTDIR}/sources
 	${RM} "$@.d"
-	$(COMPILE.cc) -g -I/usr/local/include/marsyas -Iheaders -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sources/bextract.o sources/bextract.cpp
+	$(COMPILE.cc) -g -I/usr/local/include/marsyas -Iheaders -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sources/bextract.o sources/bextract.cpp
+
+${OBJECTDIR}/sources/main.o: sources/main.cpp 
+	${MKDIR} -p ${OBJECTDIR}/sources
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -I/usr/local/include/marsyas -Iheaders -fPIC  -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/sources/main.o sources/main.cpp
 
 # Subprojects
 .build-subprojects:
@@ -79,7 +79,7 @@ ${OBJECTDIR}/sources/bextract.o: sources/bextract.cpp
 # Clean Targets
 .clean-conf: ${CLEAN_SUBPROJECTS}
 	${RM} -r ${CND_BUILDDIR}/${CND_CONF}
-	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/audiogestureml
+	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libAudioGestureML.${CND_DLIB_EXT}
 
 # Subprojects
 .clean-subprojects:

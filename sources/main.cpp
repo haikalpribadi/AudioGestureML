@@ -2,7 +2,7 @@
  * File:   main.cpp
  * Author: haikalpribadi
  *
- * Created on 28 December 2013, 16:08
+ * Created on 29 December 2013, 16:08
  */
 
 #include <cstdlib>
@@ -28,4 +28,3 @@ int main(int argc, const char** argv) {
     
     return 0;
 }
-
